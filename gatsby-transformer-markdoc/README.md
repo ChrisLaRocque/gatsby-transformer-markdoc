@@ -6,7 +6,9 @@ Take files utilizing Stripe's [Markdoc](https://markdoc.dev/) format and render 
 
 This plugin looks to nodes created by `gatsby-source-filesystem`, so that plugin needs to be installed if not already.
 
-`npm install gatsby-transformer-markdoc`
+```
+npm install gatsby-transformer-markdoc
+```
 
 or with `gatsby-source-filesystem`
 
