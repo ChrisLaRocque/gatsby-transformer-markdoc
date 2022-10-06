@@ -2,11 +2,37 @@
 
 Take files utilizing Stripe's [Markdoc](https://markdoc.dev/) format and render as static HTML. Works for standard Markdown as well.
 
+## Installation
+
+This plugin looks to nodes created by `gatsby-source-filesystem`, so that plugin needs to be installed if not already.
+
+`npm install gatsby-transformer-markdoc`
+
+or with `gatsby-source-filesystem`
+`npm install gatsby-transformer-markdoc gatsby-source-filesystem`
+
+## How to use
+
+```javascript
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-transformer-markdoc`,
+    options: {
+      // Which file extensions should be parsed by Markdoc? Defaults to 'Markdoc'
+      fileExtensions: ["mdoc"],
+      // Config object for Markdoc, see example site for usage
+      config: {},
+    },
+  },
+],
+```
+
 ## Plugin options
 
 ### `fileExtensions`
 
-Array of strings. Nodes created by `gatsby-source-filesystem` include an `extension` field. Tell `gatsby-transformer-markdoc` nodes with a certain file extension should be parsed by Markdoc.
+Array of strings. Nodes created by `gatsby-source-filesystem` include an `extension` field. Tell `gatsby-transformer-markdoc` nodes with a certain file extension should be parsed by Markdoc. For comparison `gatsby-transformer-remark` [transforms all nodes with `md` or `markdown` extensions](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark#parsing-algorithm).
 
 ### `config`
 

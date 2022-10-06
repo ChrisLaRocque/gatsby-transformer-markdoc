@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
   "peerDependencies": {
     "gatsby": "^4.24.1",
     "react": "^18.2.0",
