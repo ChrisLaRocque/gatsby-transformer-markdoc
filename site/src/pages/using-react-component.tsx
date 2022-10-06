@@ -3,9 +3,10 @@ import { graphql } from "gatsby";
 import MarkdownReact from "gatsby-transformer-markdoc/components/MarkdocReact";
 import config from "../../markdoc/config";
 import { Callout } from "../components/Callout";
-
+import { Fence } from "../components/Fence";
 const components = {
   Callout,
+  Fence,
 };
 export default function MarkdocPage({ data }) {
   return (
