@@ -1,14 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
+import MarkdownReact from "gatsby-transformer-markdoc/components/MarkdocReact";
+import config from "../../markdoc/config";
+import { Callout } from "../components/Callout";
 
+const components = {
+  Callout,
+};
 export default function MarkdocPage({ data }) {
   return (
     <>
-      <main
-        className="page"
-        dangerouslySetInnerHTML={{ __html: data.markdoc.html }}
-      >
-        {}
+      <main className="page">
+        <MarkdownReact
+          rawContent={
+            (data.markdoc.raw += `{% callout type="warning" %} This is a warning callout! {% /callout %}`)
+          }
+          config={config}
+          components={components}
+        />
       </main>
       <style>
         {`
@@ -67,8 +76,8 @@ export default function MarkdocPage({ data }) {
   );
 }
 export const query = graphql`
-  query ($id: String) {
-    markdoc(id: { eq: $id }) {
+  query {
+    markdoc {
       html
       raw
     }

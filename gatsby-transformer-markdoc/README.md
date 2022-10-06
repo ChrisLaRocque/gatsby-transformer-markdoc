@@ -1,6 +1,6 @@
 # gatsby-transformer-markdoc
 
-Take files utilizing Stripe's Markdoc format and render as static HTML. Works for standard Markdown as well.
+Take files utilizing Stripe's [Markdoc](https://markdoc.dev/) format and render as static HTML. Works for standard Markdown as well.
 
 ## Plugin options
 
@@ -18,16 +18,16 @@ Pass an object with config options for Markdoc as outlined here: [https://markdo
 import MarkdocReact from "gatsby-transformer-markdoc/components/MarkdocReact"
 ```
 
-This component allows you to use the Markdoc React renderer, just pass it the usual arguments.
+This component allows you to use the Markdoc React renderer, just pass it the usual arguments. `/site/src/pages/using-react-component.tsx` has an example.
 
 ### `rawContent`
 
-The Markdown/Markdoc file in string form to be renered.
+The Markdown/Markdoc file in string form to be rendered.
 
 ### `config`
 
-The Markdoc Config options object as outlined [here](https://markdoc.dev/docs/syntax#config)
+The Markdoc Config options object as outlined [here](https://markdoc.dev/docs/syntax#config). Ideally in the future this would fallback to the pluginOptions by default.
 
 ### `components`
 
-The React components to be used by the renderer. More [here](https://markdoc.dev/docs/render#react)
+The React components to be used by the renderer. More [here](https://markdoc.dev/docs/render#react).
