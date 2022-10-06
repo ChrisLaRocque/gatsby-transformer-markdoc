@@ -9,7 +9,10 @@ This plugin looks to nodes created by `gatsby-source-filesystem`, so that plugin
 `npm install gatsby-transformer-markdoc`
 
 or with `gatsby-source-filesystem`
-`npm install gatsby-transformer-markdoc gatsby-source-filesystem`
+
+```
+npm install gatsby-transformer-markdoc gatsby-source-filesystem
+```
 
 ## How to use
 
@@ -25,6 +28,13 @@ plugins: [
       config: {},
     },
   },
+  // If you weren't previously using gatsby-source-filesystem the config would look something like this
+   {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/path-to-mdoc-files/`,
+      },
+    },
 ],
 ```
 
