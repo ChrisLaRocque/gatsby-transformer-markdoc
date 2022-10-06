@@ -10,7 +10,7 @@ This plugin looks to nodes created by `gatsby-source-filesystem`, so that plugin
 npm install gatsby-transformer-markdoc
 ```
 
-or with `gatsby-source-filesystem`
+or if you need `gatsby-source-filesystem` as well
 
 ```
 npm install gatsby-transformer-markdoc gatsby-source-filesystem
