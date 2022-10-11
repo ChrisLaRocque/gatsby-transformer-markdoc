@@ -7,6 +7,10 @@
     "gatsby",
     "gatsby-plugin"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChrisLaRocque/gatsby-transformer-markdoc.git"
+  },
   "peerDependencies": {
     "gatsby": "^4.24.1",
     "react": "^18.2.0",
