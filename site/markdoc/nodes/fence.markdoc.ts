@@ -1,6 +1,9 @@
-module.exports = {
-  render: "Fence",
+import { CodeBlock } from "../../components";
+
+export const fence = {
+  render: CodeBlock,
   attributes: {
+    content: { type: String },
     language: {
       type: String,
       description:

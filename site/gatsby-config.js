@@ -1,5 +1,3 @@
-const markdocConfig = require("./markdoc/config");
-
 module.exports = {
   plugins: [
     {
@@ -12,7 +10,7 @@ module.exports = {
       resolve: "gatsby-transformer-markdoc",
       //   options: {},
       options: {
-        config: markdocConfig,
+        schemaPath: "./markdoc",
         fileExtensions: ["mdoc", "md"], // just 'mdoc' by default
       },
     },

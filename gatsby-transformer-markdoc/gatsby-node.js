@@ -1,7 +1,11 @@
-const Markdoc = require("@markdoc/markdoc");
+const fs = require("fs");
+const path = require("path");
 const yaml = require("js-yaml");
+const Markdoc = require("@markdoc/markdoc");
+// const { defaultObject } = require("./runtime");
+const { getConfig } = require("./getConfig");
 
-function parseMarkdoc(content, config) {
+function parseFile(content, config) {
   const ast = Markdoc.parse(content);
 
   // Markdoc is frontmatter format agnostic, defaulted to YAML as its the only option for the Next plugin.
@@ -23,7 +27,10 @@ function parseMarkdoc(content, config) {
   };
   return parsedObj;
 }
-
+async function onPreBootstrap({}, options) {
+  const config = await getConfig("./markdoc");
+  console.log(config);
+}
 async function onCreateNode(
   { node, actions, loadNodeContent, createNodeId, createContentDigest },
   options
@@ -34,8 +41,9 @@ async function onCreateNode(
     return;
   }
 
+  // TODO: compare current config to last
   const content = await loadNodeContent(node);
-  const parsedMarkdocData = parseMarkdoc(content, options.config);
+  const parsedMarkdocData = parseFile(content, options.config);
   const markdocNode = {
     ...parsedMarkdocData,
     id: createNodeId(`markdoc-${node.id}`),
@@ -53,13 +61,14 @@ async function onCreateNode(
   createParentChildLink({ parent: node, child: markdocNode });
 }
 exports.onCreateNode = onCreateNode;
+exports.onPreBootstrap = onPreBootstrap;
 exports.pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
-    config: Joi.object()
+    schemaPath: Joi.string()
       .description(
-        `Pass config object to Markdoc transform() step. See https://markdoc.dev/docs/syntax#config`
+        `Pass path of schema folder if not in ./markdoc. See https://markdoc.dev/docs/syntax#config`
       )
-      .default({}),
+      .default("./markdoc"),
     fileExtensions: Joi.array()
       .description(
         "File extensions to look for in File nodes generated from gatsby-source-filesystem"
